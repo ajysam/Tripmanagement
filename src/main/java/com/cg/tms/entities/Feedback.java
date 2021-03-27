@@ -2,18 +2,21 @@ package com.cg.tms.entities;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Feedback {
 	@GeneratedValue
 	@Id
 	private int feedbackId;
+
+	@OneToOne
+	@Column(nullable = false)
 	private Customer customer;
 	private String feedback;
 	private int rating;
+
+	@Column(nullable = false)
 	private LocalDate submitDate;
 
 	public Feedback( String feedback, int rating) {
